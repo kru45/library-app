@@ -1,38 +1,196 @@
-.App {
+:root {
+  --bg-color: #f4f7f6;
+  --text-color: #333;
+  --primary-color: #4a90e2;
+  --primary-hover: #357abd;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --success: #2ecc71;
+  --warning: #e67e22;
+  --danger: #e74c3c;
+  --danger-hover: #c0392b;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.library-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.library-header {
   text-align: center;
+  margin-bottom: 40px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.library-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.library-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.library-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .library-content {
+    grid-template-columns: 1fr;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-section {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  height: fit-content;
+}
+
+.form-section h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+.book-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+}
+
+.book-form input {
+  padding: 12px;
+  border: 1px solid #ccd1d9;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.book-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.book-form button {
+  padding: 12px;
+  background-color: var(--primary-color);
   color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.book-form button:hover {
+  background-color: var(--primary-hover);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.books-section h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 5px solid var(--primary-color);
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+}
+
+.book-card.borrowed {
+  border-left-color: var(--warning);
+}
+
+.book-card h3 {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+}
+
+.author {
+  margin: 0 0 15px 0;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.status-badge.available {
+  background-color: #e8f8f0;
+  color: var(--success);
+}
+
+.status-badge.borrowed {
+  background-color: #fef5ec;
+  color: var(--warning);
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.status-btn, .delete-btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.status-btn {
+  background-color: #f1f3f5;
+  color: #495057;
+}
+
+.status-btn:hover {
+  background-color: #e9ecef;
+}
+
+.delete-btn {
+  background-color: #fadbd8;
+  color: var(--danger);
+}
+
+.delete-btn:hover {
+  background-color: var(--danger);
+  color: white;
 }
